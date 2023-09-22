@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, 
 export class AppComponent {
   title = 'IP-Address-Tracker';
 
-  inputForm!: FormGroup
+  inputForm!: FormGroup;
 
   constructor(private fb: FormBuilder){
     this.inputForm = this.fb.group({
