@@ -1,4 +1,8 @@
 <div class="container">
   <img src="../assets/pattern-bg-desktop.png" alt="">
   <h1 class="header-text">IP Address Tracker</h1>
+
+  <form [formGroup]="inputForm">
+    <input type="text" formControlName="ipAddress" placeholder="Search for any IP address or domain">
+  </form>
 </div>

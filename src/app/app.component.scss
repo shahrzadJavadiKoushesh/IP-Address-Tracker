@@ -1,15 +1,34 @@
-.container{
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    img{
+
+    img {
         z-index: 0;
     }
 
-    .header-text{
+    .header-text {
         color: #FFF;
         z-index: 1;
         margin-top: -250px;
+    }
+
+    form {
+        z-index: 1;
+        margin-right: 15%;
+
+        input {
+            z-index: 1;
+            margin-top: 1%;
+            width: 220%;
+            height: 40px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            padding: 5px;
+            font-size: 12px;
+        }
+
     }
 }
