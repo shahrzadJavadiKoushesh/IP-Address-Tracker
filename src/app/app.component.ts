@@ -9,11 +9,17 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, 
 export class AppComponent {
   title = 'IP-Address-Tracker';
 
-  inputForm!: FormGroup;
+  constructor(private fb: FormBuilder) { }
 
-  constructor(private fb: FormBuilder){
-    this.inputForm = this.fb.group({
-        ipAddress: ['', Validators.required]
-    })
+  inputForm = this.fb.group({
+    ipAddress: ['', Validators.required]
+  })
+
+  submitData() {
+    let IPAddress = this.inputForm.value.ipAddress;
+    console.log(IPAddress);
+    
   }
+
+
 }
