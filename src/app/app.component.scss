@@ -31,4 +31,19 @@
         }
 
     }
+
+    .arrow-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        z-index: 1;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        margin-top: -50px;
+        margin-left: 25%;
+        cursor: pointer;
+    }
 }
