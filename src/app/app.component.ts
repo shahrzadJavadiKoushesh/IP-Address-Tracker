@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, FormArray } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +10,32 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, 
 export class AppComponent {
   title = 'IP-Address-Tracker';
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
 
   inputForm = this.fb.group({
     ipAddress: ['', Validators.required]
   })
 
+
+
   submitData() {
     let IPAddress = this.inputForm.value.ipAddress;
     console.log(IPAddress);
-    
+
+    let headers = new HttpHeaders({
+      'x-rapidapi-host': 'https://geo.ipify.org/api/v2/country',
+      'x-rapidapi-key': 'at_fi2fk5FunRtfBcGEAXUoJSMjLNcli',
+      
+    });
+
+    this.http
+      .get<any>('https://geo.ipify.org/api/v2/country', {
+        headers: headers,
+      })
+      .subscribe(data => {
+        console.log(data);
+      });
+
   }
 
 
