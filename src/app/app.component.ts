@@ -22,20 +22,6 @@ export class AppComponent {
     let IPAddress = this.inputForm.value.ipAddress;
     console.log(IPAddress);
 
-    let headers = new HttpHeaders({
-      'x-rapidapi-host': 'https://geo.ipify.org/api/v2/country',
-      'x-rapidapi-key': 'at_fi2fk5FunRtfBcGEAXUoJSMjLNcli',
-      
-    });
-
-    this.http
-      .get<any>('https://geo.ipify.org/api/v2/country', {
-        headers: headers,
-      })
-      .subscribe(data => {
-        console.log(data);
-      });
-
   }
 
 
