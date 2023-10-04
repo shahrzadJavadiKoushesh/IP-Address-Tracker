@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpService } from './http-service.service';
 
 @Component({
@@ -18,8 +17,6 @@ export class AppComponent {
     ipAddress: ['', Validators.required]
   })
 
-
-
   submitData() {
     let IPAddress = this.inputForm.value.ipAddress;
     console.log(IPAddress);
@@ -27,6 +24,7 @@ export class AppComponent {
     if (!IPAddress){
       return
     }
+    
     this.httpService.getLocation(IPAddress).subscribe(
       (response) => {this.data = response },
       (error) => {console.log(error)}

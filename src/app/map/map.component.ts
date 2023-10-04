@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as Leaflet from 'leaflet'; 
 
 @Component({
@@ -7,6 +7,9 @@ import * as Leaflet from 'leaflet';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent {
+
+  @Input() lat ?:number;
+  @Input() lng ?:number;
 
   map!: Leaflet.Map;
   markers: Leaflet.Marker[] = [];
@@ -17,7 +20,22 @@ export class MapComponent {
       })
     ],
     zoom: 10,
-    center: { lat: 35.686401, lng: 51.432861 }
+    center: { lat: 0, lng: 0 }
+  };
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['lat'] && changes['lng']) {
+      this.updateMapCenter();
+    }
+  }
+
+  updateMapCenter(): void {
+    if (this.lat !== undefined && this.lng !== undefined) {
+      this.options.center = { lat: this.lat, lng: this.lng };
+      if (this.map) {
+        this.map.panTo([this.lat, this.lng]);
+      }
+    }
   }
 
   initMarkers() {
