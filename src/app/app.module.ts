@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './map/map.component';
+import { HttpService } from './http-service.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { MapComponent } from './map/map.component';
     LeafletModule,
     HttpClientModule 
   ],
-  providers: [],
+  providers: [
+    HttpService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

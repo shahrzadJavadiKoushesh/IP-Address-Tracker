@@ -11,6 +11,7 @@ import { HttpService } from './http-service.service';
 export class AppComponent {
   title = 'IP-Address-Tracker';
   data : any;
+  
   constructor(private fb: FormBuilder, private httpService: HttpService) { }
 
   inputForm = this.fb.group({
@@ -23,11 +24,13 @@ export class AppComponent {
     let IPAddress = this.inputForm.value.ipAddress;
     console.log(IPAddress);
 
-    this.httpService.getLocation().subscribe(
+    if (!IPAddress){
+      return
+    }
+    this.httpService.getLocation(IPAddress).subscribe(
       (response) => {this.data = response },
       (error) => {console.log(error)}
     )
-
     console.log(this.data)
 
   }
