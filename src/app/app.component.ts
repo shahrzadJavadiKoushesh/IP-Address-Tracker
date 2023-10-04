@@ -20,11 +20,14 @@ export class AppComponent {
   submitData() {
     let IPAddress = this.inputForm.value.ipAddress;
     console.log(IPAddress);
+    console.log(typeof(IPAddress))
 
     if (!IPAddress){
+      this.httpService.getLocation('8.8.8.8').subscribe(
+        (response) => {this.data = response}
+      )
       return
     }
-    
     this.httpService.getLocation(IPAddress).subscribe(
       (response) => {this.data = response },
       (error) => {console.log(error)}
