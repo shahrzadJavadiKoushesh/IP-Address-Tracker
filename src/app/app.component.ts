@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpService } from './http-service.service';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'IP-Address-Tracker';
-
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  data : any;
+  constructor(private fb: FormBuilder, private httpService: HttpService) { }
 
   inputForm = this.fb.group({
     ipAddress: ['', Validators.required]
@@ -21,6 +22,13 @@ export class AppComponent {
   submitData() {
     let IPAddress = this.inputForm.value.ipAddress;
     console.log(IPAddress);
+
+    this.httpService.getLocation().subscribe(
+      (response) => {this.data = response },
+      (error) => {console.log(error)}
+    )
+
+    console.log(this.data)
 
   }
 

@@ -17,7 +17,7 @@ export class MapComponent {
       })
     ],
     zoom: 10,
-    center: { lat: 28.626137, lng: 79.821603 }
+    center: { lat: 35.686401, lng: 51.432861 }
   }
 
   initMarkers() {
@@ -52,7 +52,6 @@ export class MapComponent {
 
   onMapReady($event: Leaflet.Map) {
     this.map = $event;
-    this.initMarkers();
   }
 
   mapClicked($event: any) {
